@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .anxiety-input {
+    @apply w-full px-4 py-3 rounded-lg border-2 border-anxiety-300 focus:border-anxiety-500 focus:ring-anxiety-500 transition-colors;
+  }
+  
+  .anxiety-button {
+    @apply px-6 py-3 bg-anxiety-500 text-white rounded-lg hover:bg-anxiety-600 transition-colors font-medium;
+  }
+
+  .interpretation-card {
+    @apply p-6 bg-white rounded-xl shadow-lg border-2 border-anxiety-100 hover:border-anxiety-300 transition-all;
+  }
+} 
