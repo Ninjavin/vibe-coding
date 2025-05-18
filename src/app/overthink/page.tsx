@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChatBubbleBottomCenterTextIcon, LightBulbIcon, SparklesIcon, ArrowLeftIcon } from '@heroicons/react/24/solid';
 import Groq from 'groq-sdk';
 import Link from 'next/link';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 type Mode = 'humor' | 'serious' | 'ai';
 
@@ -100,24 +101,27 @@ export default function OverthinkerPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-900 via-slate-900 to-black text-white">
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950 text-gray-900 dark:text-white">
+      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-20 dark:opacity-30"></div>
       
       <div className="relative">
         {/* Header */}
-        <header className="border-b border-gray-800/50 backdrop-blur-sm">
+        <header className="border-b border-gray-200/50 dark:border-gray-800/50 backdrop-blur-sm">
           <div className="container mx-auto max-w-6xl px-4 py-4">
             <div className="flex justify-between items-center">
               <Link 
                 href="/"
-                className="flex items-center gap-2 text-gray-400 hover:text-white transition-all group"
+                className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-all group"
               >
                 <ArrowLeftIcon className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                 <span>Back to Tools</span>
               </Link>
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-800/50 border border-gray-700/50 text-gray-400">
-                <SparklesIcon className="w-4 h-4" />
-                <span className="text-sm">Powered by Groq</span>
+              <div className="flex items-center gap-4">
+                <ThemeToggle />
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100/50 dark:bg-gray-800/50 border border-gray-200/50 dark:border-gray-700/50 text-gray-600 dark:text-gray-400">
+                  <SparklesIcon className="w-4 h-4" />
+                  <span className="text-sm">Powered by Groq</span>
+                </div>
               </div>
             </div>
           </div>
@@ -133,7 +137,7 @@ export default function OverthinkerPage() {
             <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 text-transparent bg-clip-text">
               Overthinker Simulator
             </h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Transform your simple messages into a spiral of endless possibilities! 🤔✨
             </p>
           </motion.div>
@@ -145,8 +149,8 @@ export default function OverthinkerPage() {
             transition={{ delay: 0.2 }}
             className="relative"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-rose-500/20 to-purple-500/20 blur-3xl -z-10"></div>
-            <div className="relative bg-gray-900/50 backdrop-blur-xl border border-gray-800/50 rounded-2xl p-6 mb-8">
+            <div className="absolute inset-0 bg-gradient-to-r from-rose-500/10 to-purple-500/10 dark:from-rose-500/5 dark:to-purple-500/5 blur-3xl -z-10"></div>
+            <div className="relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200/50 dark:border-gray-800/50 rounded-2xl p-6 mb-8">
               <form onSubmit={handleSubmit}>
                 <div className="mb-8">
                   <input
@@ -154,7 +158,7 @@ export default function OverthinkerPage() {
                     value={situation}
                     onChange={(e) => setSituation(e.target.value)}
                     placeholder="Enter any situation to overthink... (e.g., 'They left me on read')"
-                    className="w-full px-6 py-4 rounded-xl bg-gray-800/50 border-2 border-gray-700/50 focus:border-fuchsia-500/50 focus:ring-2 focus:ring-fuchsia-500/20 transition-all outline-none text-white placeholder-gray-500 text-lg"
+                    className="w-full px-6 py-4 rounded-xl bg-white/50 dark:bg-gray-800/50 border-2 border-gray-200/50 dark:border-gray-700/50 focus:border-fuchsia-500/50 focus:ring-2 focus:ring-fuchsia-500/20 transition-all outline-none text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 text-lg"
                     required
                   />
                 </div>
@@ -171,15 +175,15 @@ export default function OverthinkerPage() {
                         className={`relative group p-4 rounded-xl transition-all duration-300 ${
                           mode === modeKey
                             ? `bg-gradient-to-r ${details.gradient} ${details.shadow} shadow-lg`
-                            : 'bg-gray-800/50 hover:bg-gray-800/80'
+                            : 'bg-white/50 dark:bg-gray-800/50 hover:bg-gray-50 dark:hover:bg-gray-800/80'
                         }`}
                       >
                         <div className="flex flex-col items-center text-center space-y-2">
-                          <Icon className={`w-8 h-8 ${mode === modeKey ? 'text-white' : 'text-gray-400'}`} />
-                          <h3 className={`font-medium ${mode === modeKey ? 'text-white' : 'text-gray-300'}`}>
+                          <Icon className={`w-8 h-8 ${mode === modeKey ? 'text-white' : 'text-gray-600 dark:text-gray-400'}`} />
+                          <h3 className={`font-medium ${mode === modeKey ? 'text-white' : 'text-gray-900 dark:text-gray-300'}`}>
                             {details.title}
                           </h3>
-                          <p className={`text-sm ${mode === modeKey ? 'text-white/80' : 'text-gray-500'}`}>
+                          <p className={`text-sm ${mode === modeKey ? 'text-white/80' : 'text-gray-600 dark:text-gray-400'}`}>
                             {details.description}
                           </p>
                         </div>
@@ -198,8 +202,8 @@ export default function OverthinkerPage() {
                   type="submit" 
                   className={`w-full px-6 py-4 rounded-xl font-medium text-lg transition-all duration-300 ${
                     isThinking || !situation.trim()
-                      ? 'bg-gray-800/50 text-gray-500 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-fuchsia-500 to-purple-600 text-white hover:shadow-lg hover:shadow-purple-500/20 hover:scale-[1.02]'
+                      ? 'bg-gray-100 dark:bg-gray-800/50 text-gray-400 dark:text-gray-500 cursor-not-allowed'
+                      : 'bg-gradient-to-r from-rose-500 to-fuchsia-600 text-white hover:shadow-lg hover:shadow-fuchsia-500/20 hover:scale-[1.02]'
                   }`}
                   disabled={isThinking || !situation.trim()}
                 >
@@ -210,22 +214,22 @@ export default function OverthinkerPage() {
                         <motion.div
                           animate={{ scale: [1, 1.2, 1] }}
                           transition={{ duration: 1, repeat: Infinity }}
-                          className="w-2 h-2 rounded-full bg-white"
+                          className="w-2 h-2 rounded-full bg-current"
                         />
                         <motion.div
                           animate={{ scale: [1, 1.2, 1] }}
                           transition={{ duration: 1, repeat: Infinity, delay: 0.2 }}
-                          className="w-2 h-2 rounded-full bg-white"
+                          className="w-2 h-2 rounded-full bg-current"
                         />
                         <motion.div
                           animate={{ scale: [1, 1.2, 1] }}
                           transition={{ duration: 1, repeat: Infinity, delay: 0.4 }}
-                          className="w-2 h-2 rounded-full bg-white"
+                          className="w-2 h-2 rounded-full bg-current"
                         />
                       </div>
                     </div>
                   ) : (
-                    'Generate Overthinking'
+                    'Generate Interpretations'
                   )}
                 </button>
               </form>
@@ -239,7 +243,7 @@ export default function OverthinkerPage() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="text-red-400 text-center mb-8 bg-red-500/10 border border-red-500/20 rounded-xl p-4"
+                className="text-red-500 dark:text-red-400 text-center mb-8 bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 rounded-xl p-4"
               >
                 {error}
               </motion.div>
@@ -249,7 +253,7 @@ export default function OverthinkerPage() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="grid gap-4 md:grid-cols-2"
+                className="space-y-6"
               >
                 {interpretations.map((interpretation, index) => (
                   <motion.div
@@ -259,9 +263,9 @@ export default function OverthinkerPage() {
                     transition={{ delay: index * 0.1 }}
                     className="group relative"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/10 to-purple-500/10 rounded-xl blur-xl transition-all duration-300 group-hover:blur-2xl"></div>
-                    <div className="relative p-6 rounded-xl bg-gray-900/50 backdrop-blur border border-gray-800/50 hover:border-fuchsia-500/30 transition-all duration-300">
-                      <p className="text-gray-300 text-lg">{interpretation}</p>
+                    <div className="absolute inset-0 bg-gradient-to-r from-rose-500/5 to-fuchsia-500/5 dark:from-rose-500/10 dark:to-fuchsia-500/10 rounded-xl blur-xl transition-all duration-300 group-hover:blur-2xl"></div>
+                    <div className="relative p-6 rounded-xl bg-white/50 dark:bg-gray-900/50 backdrop-blur border border-gray-200/50 dark:border-gray-800/50 hover:border-fuchsia-500/30 dark:hover:border-fuchsia-500/30 transition-all duration-300">
+                      <p className="text-gray-700 dark:text-gray-300 text-lg">{interpretation}</p>
                     </div>
                   </motion.div>
                 ))}

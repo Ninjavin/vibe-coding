@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -8,6 +9,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        border: {
+          DEFAULT: 'hsl(var(--border))',
+        },
+        background: {
+          DEFAULT: 'hsl(var(--background))',
+          light: '#ffffff',
+          dark: '#0a0a0a',
+        },
+        foreground: 'hsl(var(--foreground))',
+        surface: {
+          light: '#f3f4f6',
+          dark: '#1a1a1a',
+        },
         'anxiety': {
           50: '#f0f9ff',
           100: '#e0f2fe',
@@ -29,6 +43,9 @@ module.exports = {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
         },
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
     },
   },

@@ -9,6 +9,7 @@ import {
   ArrowRightIcon,
   SparklesIcon
 } from 'lucide-react';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const tools = [
   {
@@ -16,8 +17,8 @@ const tools = [
     description: 'Turn simple situations into complex overthinking scenarios with AI-powered analysis.',
     icon: BrainIcon,
     color: 'from-violet-500 to-purple-500',
-    textColor: 'text-purple-500',
-    ringColor: 'ring-purple-500',
+    textColor: 'text-purple-500 dark:text-purple-400',
+    ringColor: 'ring-purple-500/20',
     href: '/overthink',
     examples: [
       '"k" → "Does this mean they\'re mad?"',
@@ -30,8 +31,8 @@ const tools = [
     description: 'Generate believable stories for those awkward situations when you need a quick escape.',
     icon: ShieldCheckIcon,
     color: 'from-emerald-500 to-teal-500',
-    textColor: 'text-teal-500',
-    ringColor: 'ring-teal-500',
+    textColor: 'text-teal-500 dark:text-teal-400',
+    ringColor: 'ring-teal-500/20',
     href: '/alibi',
     examples: [
       'Late to meeting',
@@ -44,8 +45,8 @@ const tools = [
     description: 'Craft the perfect response with different tones, from savage to professional.',
     icon: MessageSquareIcon,
     color: 'from-blue-500 to-cyan-500',
-    textColor: 'text-blue-500',
-    ringColor: 'ring-blue-500',
+    textColor: 'text-blue-500 dark:text-blue-400',
+    ringColor: 'ring-blue-500/20',
     href: '/replycraft',
     examples: [
       'Passive-aggressive mode',
@@ -72,18 +73,22 @@ const itemVariants = {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 text-white px-4 py-16">
+    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950 text-gray-900 dark:text-white px-4 py-16">
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         className="container mx-auto max-w-6xl"
       >
+        <div className="flex justify-end mb-4">
+          <ThemeToggle />
+        </div>
+
         <div className="text-center mb-16">
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center px-4 py-2 rounded-full bg-gray-800 text-gray-300 mb-8"
+            className="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 mb-8"
           >
             <SparklesIcon className="w-4 h-4 mr-2" />
             <span className="text-sm">Powered by Groq AI</span>
@@ -92,7 +97,7 @@ export default function Home() {
           <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text">
             Anxiety Tools for Gen Z
           </h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Your digital companion for overthinking, crafting perfect replies, and getting out of awkward situations.
           </p>
         </div>
@@ -111,17 +116,17 @@ export default function Home() {
               className="relative group"
             >
               <Link href={tool.href}>
-                <div className="h-full p-6 rounded-2xl bg-gray-800/50 backdrop-blur border border-gray-700 hover:border-gray-600 transition-all">
+                <div className="h-full p-6 rounded-2xl bg-white/50 dark:bg-gray-800/50 backdrop-blur border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all">
                   <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${tool.color} mb-4`}>
-                    <tool.icon className="w-6 h-6" />
+                    <tool.icon className="w-6 h-6 text-white" />
                   </div>
                   
-                  <h3 className="text-xl font-semibold mb-3 flex items-center group-hover:text-white">
+                  <h3 className={`text-xl font-semibold mb-3 flex items-center group-hover:text-gray-900 dark:group-hover:text-white ${tool.textColor}`}>
                     {tool.title}
                     <ArrowRightIcon className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </h3>
                   
-                  <p className="text-gray-400 mb-4">
+                  <p className="text-gray-600 dark:text-gray-400 mb-4">
                     {tool.description}
                   </p>
 
@@ -129,7 +134,7 @@ export default function Home() {
                     {tool.examples.map((example, index) => (
                       <div 
                         key={index}
-                        className="text-sm text-gray-500 bg-gray-800/50 px-3 py-2 rounded-lg"
+                        className="text-sm text-gray-500 dark:text-gray-500 bg-gray-100 dark:bg-gray-800/50 px-3 py-2 rounded-lg"
                       >
                         {example}
                       </div>
@@ -145,7 +150,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="mt-16 text-center text-gray-400"
+          className="mt-16 text-center text-gray-500 dark:text-gray-400"
         >
           <p>More tools coming soon... 👀</p>
         </motion.div>
