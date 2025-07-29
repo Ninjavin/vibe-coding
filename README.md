@@ -2,6 +2,9 @@
 
 Welcome to the most relatable web app for overthinkers! Ever wondered what your anxious brain is really thinking? We got you covered!
 
+<img width="1218" height="810" alt="image" src="https://github.com/user-attachments/assets/8d0620fb-5ed1-4c0e-a676-31bf54aff07e" />
+
+
 ## 🌟 Features
 
 - **Overthinker Simulator**: Turn simple situations into complex overthinking scenarios with AI-powered analysis
